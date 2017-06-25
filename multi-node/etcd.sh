@@ -1,7 +1,7 @@
 #!/bin/bash
 
 hostname=`hostname`
-hostip=`ifconfig enp0s8 | grep inet | grep netmask | cut -d ' ' -f10`
+hostip=`ifconfig enp0s3 | grep inet | grep netmask | cut -d ' ' -f10`
 hostip="http://${hostip}"
 
 subcmd=$1
@@ -22,7 +22,7 @@ start )
     --data-dir="/var/lib/etcd/default.etcd" \
     --listen-peer-urls=$hostip":2380" \
     --advertise-client-urls=$hostip":2379" \
-    --initial-cluster="vm-centos-1=http://192.168.99.100:2380,vm-centos-2=http://192.168.99.101:2380,vm-centos-3=http://192.168.99.102:2380" \
+    --initial-cluster="vm-dev-1=http://10.15.140.176:2380,vm-dev-2=http://10.15.140.150:2380,vm-dev-3=http://10.15.140.105:2380" \
     --initial-cluster-state="new" \
     --listen-client-urls="http://0.0.0.0:2379" \
     --initial-cluster-token="etcd-cluster" \
@@ -40,7 +40,7 @@ recover )
     --data-dir="/var/lib/etcd/default.etcd" \
     --listen-peer-urls=$hostip":2380" \
     --advertise-client-urls=$hostip":2379" \
-    --initial-cluster="vm-centos-1=http://192.168.99.100:2380,vm-centos-2=http://192.168.99.101:2380,vm-centos-3=http://192.168.99.102:2380" \
+    --initial-cluster="vm-dev-1=http://10.15.140.176:2380,vm-dev-2=http://10.15.140.150:2380,vm-dev-3=http://10.15.140.105:2380" \
     --initial-cluster-state="existing" \
     --listen-client-urls="http://0.0.0.0:2379" \
     --initial-cluster-token="etcd-cluster" \

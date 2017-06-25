@@ -14,7 +14,7 @@ init )
     ;;
 start )
     yum install -y flannel > /dev/null
-    /usr/bin/flanneld --ip-masq --etcd-endpoints="http://127.0.0.1:2379" --etcd-prefix=$etcd_prefix --iface="enp0s8" 2>&1 > /var/log/flannel.log &
+    /usr/bin/flanneld --ip-masq --etcd-endpoints="http://127.0.0.1:2379" --etcd-prefix=$etcd_prefix --iface="enp0s3" 2>&1 > /var/log/flannel.log &
     ;;
 stop )
     pkill flanneld
