@@ -1,0 +1,8 @@
+steps:
+1 bash etcd.sh start
+2 bash flannel.sh init
+  bash flannel.sh start
+3 bash docker.sh start
+4 bash kube.sh install-kube
+  bash kube.sh start-master
+  bash kube.sh start-node
